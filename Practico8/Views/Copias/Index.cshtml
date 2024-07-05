@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Practico8.Models.Copia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Copias</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Deteriorada
+            </th>
+            <th>
+                Formato
+            </th>
+            <th>
+                Precio Alquiler
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPeliculaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deteriorada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Formato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioAlquiler)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPeliculaNavigation.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
